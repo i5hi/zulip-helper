@@ -4,17 +4,20 @@ Refer to `init.sh`
 
 # EMAIL
 
-Fill out the section of /etc/zulip/settings.py headed “Outgoing email (SMTP) settings”. 
+Fill out the section of `/etc/zulip/settings.py` headed “Outgoing email (SMTP) settings”. 
 This includes the hostname and typically the port to reach your SMTP provider, and the username to log in to it. 
 You’ll also want to fill out the noreply email section.
-Put the password for the SMTP user account in /etc/zulip/zulip-secrets.conf by setting email_password. For example: email_password = abcd1234.
+Put the password for the SMTP user account in `/etc/zulip/zulip-secrets.conf` by setting email_password. For example: email_password = abcd1234.
 
 Like any other change to the Zulip configuration, be sure to restart the server to make your changes take effect.
 
 Configure your SMTP server to allows your Zulip server to send emails originating from the email addresses listed in /etc/zulip/settings.py as ZULIP_ADMINISTRATOR, NOREPLY_EMAIL_ADDRESS and if ADD_TOKENS_TO_NOREPLY_ADDRESS=True (the default), TOKENIZED_NOREPLY_EMAIL_ADDRESS.]
 
-Once your configuration is working, restart the Zulip server with su zulip -c '/home/zulip/deployments/current/scripts/restart-server'.
+Once your configuration is working, restart the Zulip server with 
 
+```
+su zulip -c '/home/zulip/deployments/current/scripts/restart-server'.
+```
 
 
 ```
