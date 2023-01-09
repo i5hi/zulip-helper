@@ -23,7 +23,7 @@ sudo apt-get update --allow-releaseinfo-change
 sudo apt-get install -y build-essential cmake apt-transport-https ca-certificates curl gnupg2 \
   software-properties-common dirmngr unzip git expect jq lsb-release ufw cryptsetup xfsprogs \
   libreadline-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev \
-  libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev
+  libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev fail2ban
 
 wget -c https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tar.xz
 tar -Jxvf Python-3.10.0.tar.xz
