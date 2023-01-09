@@ -1,0 +1,29 @@
+- hosts: zulip 
+  name: Update ssh user and port
+  become: true
+  gather_facts: false
+  vars: 
+    local_home_folder: /home/ishi
+    ansible_python_interpreter: /usr/bin/python
+  tasks:
+    - authorized_key:
+        user: zulip
+        state: present
+        manage_dir: yes
+        key: "{{ lookup('file', '{{ local_home_folder }}/.ssh/apnc.pub')}}"
+
+    - lineinfile: dest=/etc/ssh/sshd_config regexp='^#?AuthenticationMethods' line='AuthenticationMethods publickey'
+    - lineinfile: dest=/etc/ssh/sshd_config regexp='^PermitRootLogin' line='PermitRootLogin No'      
+    - lineinfile: dest=/etc/ssh/sshd_config regexp='^#Port' line='Port 2299'      
+  
+    - file: 
+        path: /home/zulip
+        state: directory
+        owner: zulip 
+        mode: u+rwx,g-rwx,o-rwx
+        recurse: yes
+
+    - service:
+        name: sshd
+        state: reloaded
+      # remove /root/.ssh/authorized_keys
