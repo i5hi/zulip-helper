@@ -53,7 +53,6 @@ su zulip -c 'home/zulip/deployments/current/scripts/setup/restore-backup /tmp/zu
 
 # ANSIBLE
 
-You will need to configure your local ansible with the following:
+You will need to configure your local ansible with the provided settings in the `ansible.cfg`
 
-- `ssh_args = -F /home/user/.ssh/config`
-This allows you to use your ssh aliases in /etc/ansible/hosts
+
