@@ -1,0 +1,9 @@
+- hosts: zulip
+  name: Backup Zulip State
+  gather_facts: true
+  vars:
+    ansible_python_interpreter: /usr/bin/python
+  tasks:
+    - name: Run zulip backup script 
+      shell: |
+        /home/zulip/deployments/current/manage.py backup --output=/tmp/zulip-backup.tar.gz
