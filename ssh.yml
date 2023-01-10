@@ -16,13 +16,6 @@
     - lineinfile: dest=/etc/ssh/sshd_config regexp='^PermitRootLogin' line='PermitRootLogin No'      
     - lineinfile: dest=/etc/ssh/sshd_config regexp='^#Port' line='Port 2299'      
   
-    - file: 
-        path: /home/zulip
-        state: directory
-        owner: zulip 
-        mode: u+rwx,g-rwx,o-rwx
-        recurse: yes
-
     - service:
         name: sshd
         state: reloaded
