@@ -14,7 +14,7 @@ printf "HOSTNAME: ${GREEN}$HOSTNAME${NC}\n"
 printf "\n"
 echo "Continue? (y/n)"
 read -r continue
-if [ "$continue" != "Y" || "$continue" != "y" ]; then
+if [ "$continue" != "Y" ] || [ "$continue" != "y" ]; then
   echo "Exiting."
   exit;
 fi
