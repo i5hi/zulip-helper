@@ -35,14 +35,16 @@ su zulip -c '/home/zulip/deployments/current/manage.py send_test_email vishalmen
 
 In `/etc/zulip/settings.py` uncomment:
 
+```
 PUSH_NOTIFICATION_BOUNCER_URL = 'https://push.zulipchat.com'
 PUSH_NOTIFICATION_REDACT_CONTENT = True (This provides privacy against the push notification server)
+```
+
+Then:
 
 ```
 su zulip -c '/home/zulip/deployments/current/manage.py register_server'
 ```
-
-See https://zulip.readthedocs.io/en/latest/production/mobile-push-notifications.html
 
 # BACKUPS
 
@@ -71,3 +73,17 @@ home/zulip/deployments/current/scripts/setup/restore-backup /tmp/zulip-backup.ta
 You will need to configure your local ansible with the provided settings in the `ansible.cfg`
 
 Use `ansible-playbook ssh.yml` to update the ssh user to zulip before running the backup.yml playbook.
+
+# SECURITY
+
+Take the time to go over the following docs on security to harden your server:
+
+https://zulip.readthedocs.io/en/latest/production/security-model.html#
+
+Major security takeaways:
+
+Disable SSH Root and Password Login
+Change SSH Port to a non-standard port
+Install fail2ban with meaningful configs
+Install ufw and block unnecessarily open ports: Refer to https://zulip.readthedocs.io/en/latest/production/requirements.html#network-and-security-specifications
+
