@@ -11,12 +11,19 @@ Put the password for the SMTP user account in `/etc/zulip/zulip-secrets.conf` by
 
 Like any other change to the Zulip configuration, be sure to restart the server to make your changes take effect.
 
-Configure your SMTP server to allows your Zulip server to send emails originating from the email addresses listed in /etc/zulip/settings.py as ZULIP_ADMINISTRATOR, NOREPLY_EMAIL_ADDRESS and if ADD_TOKENS_TO_NOREPLY_ADDRESS=True (the default), TOKENIZED_NOREPLY_EMAIL_ADDRESS.]
+Configure your SMTP server to allows your Zulip server to send emails originating from the email addresses listed in `/etc/zulip/settings.py` as
+
+```
+ZULIP_ADMINISTRATOR
+NOREPLY_EMAIL_ADDRESS 
+ADD_TOKENS_TO_NOREPLY_ADDRESS=False
+TOKENIZED_NOREPLY_EMAIL_ADDRESS
+```
 
 Once your configuration is working, restart the Zulip server with 
 
 ```
-su zulip -c '/home/zulip/deployments/current/scripts/restart-server'.
+su zulip -c '/home/zulip/deployments/current/scripts/restart-server'
 ```
 
 
@@ -26,7 +33,11 @@ su zulip -c '/home/zulip/deployments/current/manage.py send_test_email vishalmen
 
 # PUSH NOTIFICATIONS:
 
-Uncomment the PUSH_NOTIFICATION_BOUNCER_URL = 'https://push.zulipchat.com' line in your /etc/zulip/settings.py file
+In `/etc/zulip/settings.py` uncomment:
+
+PUSH_NOTIFICATION_BOUNCER_URL = 'https://push.zulipchat.com'
+PUSH_NOTIFICATION_REDACT_CONTENT = True (This provides privacy against the push notification server)
+
 ```
 su zulip -c '/home/zulip/deployments/current/manage.py register_server'
 ```
@@ -49,9 +60,10 @@ scp /home/ishi/backups/zulip-backup.tar.gz ztm:/tmp/zulip-backup.tar.gz
 
 ```
 
-To recover from a backup
+To recover from a backup; as rpot run:
+
 ```
-su zulip -c 'home/zulip/deployments/current/scripts/setup/restore-backup /tmp/zulip-backup.tar.gz'
+home/zulip/deployments/current/scripts/setup/restore-backup /tmp/zulip-backup.tar.gz
 ```
 
 # ANSIBLE
