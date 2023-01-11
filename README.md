@@ -87,3 +87,6 @@ Change SSH Port to a non-standard port
 Install fail2ban with meaningful configs
 Install ufw and block unnecessarily open ports: Refer to https://zulip.readthedocs.io/en/latest/production/requirements.html#network-and-security-specifications
 
+# SUPPORT
+
+For additional support, reach out to the team at https://chat.zulip.org
