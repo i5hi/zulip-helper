@@ -72,6 +72,8 @@ home/zulip/deployments/current/scripts/setup/restore-backup /tmp/zulip-backup.ta
 
 You will need to configure your local ansible with the provided settings in the `ansible.cfg`
 
+Create `/etc/ansible/hosts` according to your ssh aliases and ensure you use the correct hostname in your playbook.
+
 Use `ansible-playbook ssh.yml` to update the ssh user to zulip before running the backup.yml playbook.
 
 # SECURITY
